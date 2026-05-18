@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos - Materiais de Construção</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <a href="produtos.html" class="navbar-brand">
+          <span class="logo-text"> CONSTRUCAO<span>MAX</span> </span>
+        </a>
+
+        <div class="navbar-links">
+          <a href="produtos.html" class="active"> Produtos </a>
+        </div>
+
+        <div class="navbar-user">
+          <span>Olá, <strong id="nome-usuario">Usuário</strong></span>
+          <button class="btn-logout" onclick="logout()">Sair</button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Gestão de <span>Produtos</span></h1>
+          <p class="page-subtitle">
+            Controle o estoque de materiais de construção
+          </p>
+        </div>
+        <button class="btn btn-primary" onclick="abrirModalNovoProduto()">
+          Novo Produto
+        </button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card laranja">
+          <div class="stat-label">Total de Produtos</div>
+          <div class="stat-value" id="stat-total">0</div>
+        </div>
+        <div class="stat-card verde">
+          <div class="stat-label">Em Estoque</div>
+          <div class="stat-value" id="stat-estoque">0</div>
+        </div>
+        <div class="stat-card vermelho">
+          <div class="stat-label">Sem Estoque</div>
+          <div class="stat-value" id="stat-zerado">0</div>
+        </div>
+        <div class="stat-card azul">
+          <div class="stat-label">Categorias</div>
+          <div class="stat-value" id="stat-categorias">0</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Lista de Produtos</span>
+          <div class="toolbar">
+            <div class="search-box">
+              <input
+                type="text"
+                id="campo-busca"
+                placeholder="Buscar produto..."
+                oninput="buscarProdutos()"
+              />
+            </div>
+            <select
+              class="filter-select"
+              id="filtro-categoria"
+              onchange="buscarProdutos()"
+            >
+              <option value="todas">Todas as categorias</option>
+              <option value="Cimento e Argamassa">Cimento e Argamassa</option>
+              <option value="Tijolos e Blocos">Tijolos e Blocos</option>
+              <option value="Ferragens">Ferragens</option>
+              <option value="Madeiras">Madeiras</option>
+              <option value="Tintas e Vernizes">Tintas e Vernizes</option>
+              <option value="Hidráulica">Hidráulica</option>
+              <option value="Elétrica">Elétrica</option>
+              <option value="Ferramentas">Ferramentas</option>
+              <option value="Telhas e Coberturas">Telhas e Coberturas</option>
+              <option value="Pisos e Revestimentos">
+                Pisos e Revestimentos
+              </option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="panel-body" style="padding: 0">
+          <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <span>Carregando produtos...</span>
+          </div>
+
+          <div
+            class="table-wrapper"
+            id="tabela-container"
+            style="display: none"
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Categoria</th>
+                  <th>Preço</th>
+                  <th>Estoque</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="tabela-produtos"></tbody>
+            </table>
+          </div>
+
+          <div class="empty-state" id="estado-vazio" style="display: none">
+            <h3>Nenhum produto encontrado</h3>
+            <p>Cadastre seu primeiro produto clicando em "Novo Produto"</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal de Produto -->
+    <div class="modal-overlay" id="modal-produto" style="display: none">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modal-titulo">Novo Produto</h2>
+          <button class="modal-close" onclick="fecharModal()">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-error" id="modal-alerta">
+            <span id="modal-alerta-msg">Preencha todos os campos!</span>
+          </div>
+          <form id="form-produto">
+            <input type="hidden" id="produto-id" />
+
+            <div class="form-group">
+              <label class="form-label" for="produto-nome"
+                >Nome do Produto *</label
+              >
+              <input
+                type="text"
+                id="produto-nome"
+                class="form-input"
+                placeholder="Ex: Cimento CP-II 50kg"
+                required
+              />
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="produto-categoria"
+                  >Categoria *</label
+                >
+                <select id="produto-categoria" class="form-select" required>
+                  <option value="">Selecione...</option>
+                  <option value="Cimento e Argamassa">
+                    Cimento e Argamassa
+                  </option>
+                  <option value="Tijolos e Blocos">Tijolos e Blocos</option>
+                  <option value="Ferragens">Ferragens</option>
+                  <option value="Madeiras">Madeiras</option>
+                  <option value="Tintas e Vernizes">Tintas e Vernizes</option>
+                  <option value="Hidráulica">Hidráulica</option>
+                  <option value="Elétrica">Elétrica</option>
+                  <option value="Ferramentas">Ferramentas</option>
+                  <option value="Telhas e Coberturas">
+                    Telhas e Coberturas
+                  </option>
+                  <option value="Pisos e Revestimentos">
+                    Pisos e Revestimentos
+                  </option>
+                  <option value="Outros">Outros</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="produto-preco"
+                  >Preço (R$) *</label
+                >
+                <input
+                  type="number"
+                  id="produto-preco"
+                  class="form-input"
+                  placeholder="0,00"
+                  min="0"
+                  step="0.01"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="produto-quantidade"
+                >Quantidade em Estoque *</label
+              >
+              <input
+                type="number"
+                id="produto-quantidade"
+                class="form-input"
+                placeholder="0"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="produto-descricao"
+                >Descrição</label
+              >
+              <textarea
+                id="produto-descricao"
+                class="form-textarea"
+                placeholder="Descreva o produto..."
+              ></textarea>
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-top: 8px">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                style="flex: 1"
+                onclick="fecharModal()"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="flex: 2"
+                id="btn-salvar"
+              >
+                Salvar Produto
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Exclusão -->
+    <div class="modal-overlay" id="modal-excluir" style="display: none">
+      <div class="modal" style="max-width: 400px">
+        <div class="modal-header">
+          <h2 class="modal-title">Confirmar Exclusão</h2>
+          <button class="modal-close" onclick="fecharModalExcluir()">×</button>
+        </div>
+        <div class="modal-body" style="text-align: center">
+          <p style="font-size: 16px; color: #374151; margin-bottom: 8px">
+            Tem certeza que deseja excluir o produto:
+          </p>
+          <p
+            style="
+              font-size: 18px;
+              font-weight: 700;
+              color: #111827;
+              margin-bottom: 24px;
+            "
+            id="nome-produto-excluir"
+          >
+            Produto X
+          </p>
+          <p style="font-size: 13px; color: #9ca3af; margin-bottom: 24px">
+            Esta ação não pode ser desfeita.
+          </p>
+          <div style="display: flex; gap: 12px">
+            <button
+              class="btn btn-secondary"
+              style="flex: 1"
+              onclick="fecharModalExcluir()"
+            >
+              Cancelar
+            </button>
+            <button
+              class="btn btn-danger"
+              style="flex: 1"
+              onclick="confirmarExclusao()"
+            >
+              Excluir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="produtos.js"></script>
+  </body>
+</html>

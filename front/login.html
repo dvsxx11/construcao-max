@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login - Materiais de Construcao</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <h1>CONSTRUCAO<span>MAX</span></h1>
+
+        <p>Sistema de Gerenciamento de Produtos</p>
+      </div>
+
+      <h2 class="auth-title">Entrar na conta</h2>
+
+      <div class="alert alert-error" id="alerta">
+        <span id="alerta-msg"> Email ou senha incorretos! </span>
+      </div>
+
+      <form class="auth-form" id="form-login">
+        <div class="form-group">
+          <label class="form-label" for="email"> E-mail </label>
+
+          <input
+            type="email"
+            id="email"
+            class="form-input"
+            placeholder="seu@email.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="senha"> Senha </label>
+
+          <input
+            type="password"
+            id="senha"
+            class="form-input"
+            placeholder="********"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full" id="btn-login">
+          Entrar
+        </button>
+      </form>
+
+      <div class="auth-link">
+        Nao tem conta?
+
+        <a href="cadastro.html"> Criar conta gratis </a>
+      </div>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>
