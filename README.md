@@ -12,8 +12,9 @@ projeto/
 │
 ├── index.js          ← Servidor Express com todas as rotas
 ├── package.json      ← Dependências
-├── .env              ← Credenciais do Supabase 
-│
+├── .env              ← Credenciais do Supabase
+├── package.json      ← Identidade do Projeto 
+
 └── front/
     ├── index.html        ← Redireciona para login/produtos
     ├── login.html        ← Tela de login
@@ -23,7 +24,6 @@ projeto/
     ├── script.js         ← Funções utilitárias
     ├── login.js          ← Lógica do login
     ├── cadastro.js       ← Lógica do cadastro
-    ├── package.json      ← Identidade do Projeto
     └── produtos.js       ← Lógica do CRUD de produtos
 ```
 
