@@ -1,7 +1,7 @@
-const API_URL = ''; // Mantenha vazio se a API estiver no mesmo domínio
+const API_URL = '';
 
 let idProdutoParaExcluir = null;
-let produtosOriginais = []; // Array para armazenar todos os produtos
+let produtosOriginais = [];
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -35,8 +35,8 @@ async function carregarProdutos() {
     const dados = await resposta.json();
 
     if (dados.sucesso) {
-      produtosOriginais = dados.produtos; // Armazena os produtos originais
-      aplicarFiltros(); // Aplica os filtros atuais
+      produtosOriginais = dados.produtos;
+      aplicarFiltros();
       atualizarEstatisticas(produtosOriginais);
     } else {
       alert(dados.mensagem);
@@ -49,19 +49,16 @@ async function carregarProdutos() {
   }
 }
 
-// Função chamada pelos inputs de busca
 function buscarProdutos() {
   aplicarFiltros();
 }
 
-// Função que aplica todos os filtros
 function aplicarFiltros() {
   const termoBusca = document.getElementById('campo-busca').value.toLowerCase().trim();
   const categoriaSelecionada = document.getElementById('filtro-categoria').value;
   
   let produtosFiltrados = [...produtosOriginais];
   
-  // Filtro por nome/descrição
   if (termoBusca !== '') {
     produtosFiltrados = produtosFiltrados.filter(produto => 
       produto.nome.toLowerCase().includes(termoBusca) ||
@@ -69,14 +66,12 @@ function aplicarFiltros() {
     );
   }
   
-  // Filtro por categoria
   if (categoriaSelecionada !== 'todas') {
     produtosFiltrados = produtosFiltrados.filter(produto => 
       produto.categoria === categoriaSelecionada
     );
   }
   
-  // Renderiza a tabela com os produtos filtrados
   renderizarTabela(produtosFiltrados);
 }
 
@@ -214,7 +209,6 @@ document.getElementById('form-produto').addEventListener('submit', async (e) => 
 function abrirModalExcluir(id) {
   idProdutoParaExcluir = id;
   
-  // Busca o nome do produto para mostrar no modal
   const produto = produtosOriginais.find(p => p.id === id);
   if (produto) {
     const nomeProdutoElem = document.getElementById('nome-produto-excluir');
