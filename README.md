@@ -54,9 +54,9 @@ npm start
 ## 👨‍🎓 Como usar
 1. Acesse `login.html` → **Criar conta grátis**
 2. Faça o cadastro e o login
-3. Use **➕ Novo Produto** para cadastrar
+3. Use ** Novo Produto** para cadastrar
 4. Use **busca** e **filtro de categoria** para pesquisar
-5. Use **✏️ Editar** e **🗑️ Excluir** em cada produto
+5. Use **Editar** e **Excluir** em cada produto
 
 ---
 
