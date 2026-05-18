@@ -1,7 +1,7 @@
 # 🏗️ ConstruçãoMAX — Sistema de Gerenciamento de Produtos
 
 Sistema web full stack para gerenciar produtos de uma loja de materiais de construção.
-Projeto universitário usando **Node.js + Express + Supabase + HTML/CSS/JS puro**.
+Projeto feito usando **Node.js + Express + Supabase + HTML/CSS/JS puro**.
 
 ---
 
