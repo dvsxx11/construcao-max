@@ -75,5 +75,13 @@ npm start
 ### Busca e Filtro
 <img width="1600" height="797" alt="WhatsApp Image 2026-05-17 at 23 17 08" src="https://github.com/user-attachments/assets/e3051a07-e26c-43cf-87d8-5c7721ac469c" />
 
+### Tabela Produtos Supabase
+<img width="1600" height="793" alt="WhatsApp Image 2026-05-17 at 23 49 05" src="https://github.com/user-attachments/assets/f3a65952-c1bc-46df-b758-3edcd1eb508d" />
+
+### Tabela Usuarios Supabase
+<img width="1600" height="792" alt="WhatsApp Image 2026-05-17 at 23 48 54" src="https://github.com/user-attachments/assets/a2c21786-978f-456e-b24f-6f91e1d28bee" />
+
+
+
 
 ---
